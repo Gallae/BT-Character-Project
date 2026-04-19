@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class seedColour : MonoBehaviour
 {
-    public enum setColour { blue, red, yellow }
+    public Material[] seedMaterials;
+    public int randomColour;
+    public colourSet colourOfSeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        int randomNum = Random.Range(0, 3);
+        randomColour = Random.Range(0, 3);
+        GetComponent<Renderer>().material = seedMaterials[randomColour];
+        colourOfSeed = (colourSet)randomColour;
     }
 
     // Update is called once per frame
@@ -15,3 +19,4 @@ public class seedColour : MonoBehaviour
         
     }
 }
+public enum colourSet { blue, red, yellow }

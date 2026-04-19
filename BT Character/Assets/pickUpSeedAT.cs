@@ -1,14 +1,26 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class pickUpSeedAT : ActionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		public BBParameter<bool> localSeed;
+		public BBParameter<GameObject> targetSeed;
+        public BBParameter<int> blueSeeds;
+        public BBParameter<int> redSeeds;
+        public BBParameter<int> yellowSeeds;
+		public BBParameter<GameObject> blueTracker;
+		public BBParameter<GameObject> redTracker;
+		public BBParameter<GameObject> yellowTracker;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -16,7 +28,27 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
+			colourSet seedColour = targetSeed.value.GetComponent<seedColour>().colourOfSeed;
+			switch (seedColour)
+            {
+                case colourSet.blue:
+                    blueSeeds.value += 1;
+					blueTracker.value.GetComponent<TextMeshProUGUI>().text = "Blue seeds: " + blueSeeds.value;
+                    localSeed.value = true;
+                    break;
+                case colourSet.red:
+					redSeeds.value += 1;
+                    redTracker.value.GetComponent<TextMeshProUGUI>().text = "Red seeds: " + redSeeds.value;
+                    localSeed.value = true;
+                    break;
+                case colourSet.yellow:
+                    yellowSeeds.value += 1;
+                    yellowTracker.value.GetComponent<TextMeshProUGUI>().text = "Yellow seeds: " + yellowSeeds.value;
+                    localSeed.value = true;
+                    break;
+            }
+			Object.Destroy(targetSeed.value);
+            EndAction(true);
 		}
 
 		//Called once per frame while the action is active.

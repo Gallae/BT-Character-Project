@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7359005149612319029}
   - component: {fileID: 7948743620554203599}
   m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Seed
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7248652024074171629}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.35061, y: 0.25, z: -4.42}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -127,3 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124966fa823840b4cb3bed2721d0cd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::seedColour
+  seedMaterials:
+  - {fileID: 2100000, guid: 403e856159886d24b8130f0d79b5b9f2, type: 2}
+  - {fileID: 2100000, guid: be90f16e078b8954db60ef6c43ee7a77, type: 2}
+  - {fileID: 2100000, guid: aaf07a9e449a93e4b9608373f2500279, type: 2}
+  randomColour: 0
+  colourOfSeed: 0

@@ -50,6 +50,7 @@ namespace NodeCanvas.Tasks.Actions {
 			
 		}
 
+		//this function fails sometimes and defaults to the blue bin, i don't know why
 		void ChooseBin()
 		{
 			if (blueSeeds.value > redSeeds.value && blueSeeds.value > yellowSeeds.value)
@@ -63,6 +64,21 @@ namespace NodeCanvas.Tasks.Actions {
 			else if (yellowSeeds.value > blueSeeds.value && yellowSeeds.value > redSeeds.value)
 			{
 				target.value = GameObject.FindGameObjectWithTag("YellowBin");
+			}
+			else if (blueSeeds.value == redSeeds.value && blueSeeds.value > yellowSeeds.value)
+			 {
+				target.value = GameObject.FindGameObjectWithTag("BlueBin");
+				Debug.Log("Tied seeds, defaulting to blue bin");
+			}
+			else if (blueSeeds.value == yellowSeeds.value && blueSeeds.value > redSeeds.value)
+			 {
+				target.value = GameObject.FindGameObjectWithTag("BlueBin");
+				Debug.Log("Tied seeds, defaulting to blue bin");
+			}
+			else if (redSeeds.value == yellowSeeds.value && redSeeds.value > blueSeeds.value)
+			 {
+				target.value = GameObject.FindGameObjectWithTag("RedBin");
+				Debug.Log("Tied seeds, defaulting to red bin");
 			}
         }
     }
