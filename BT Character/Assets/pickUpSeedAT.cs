@@ -17,6 +17,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<GameObject> blueTracker;
 		public BBParameter<GameObject> redTracker;
 		public BBParameter<GameObject> yellowTracker;
+		public GameObject seedSpawner;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -47,7 +48,8 @@ namespace NodeCanvas.Tasks.Actions {
                     localSeed.value = true;
                     break;
             }
-			Object.Destroy(targetSeed.value);
+			seedSpawner.GetComponent<seedSpawner>().seeds.Remove(targetSeed.value);
+            Object.Destroy(targetSeed.value);
             EndAction(true);
 		}
 
